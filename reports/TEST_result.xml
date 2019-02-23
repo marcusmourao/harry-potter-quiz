@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.003" tests="9" failures="0">
+  <testsuite name="Root Suite" timestamp="2019-02-23T00:28:22" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Dummy test file" timestamp="2019-02-23T00:28:22" tests="1" file="/home/marcus/Documentos/iclinic/iclinic-challenge-nuxt/.tmp/mocha-webpack/1550881702101/main.js" failures="0" time="0">
+    <testcase name="Dummy test file Test spec" time="0" classname="Test spec">
+    </testcase>
+  </testsuite>
+  <testsuite name="Unit tests for Date Helper" timestamp="2019-02-23T00:28:22" tests="5" file="/home/marcus/Documentos/iclinic/iclinic-challenge-nuxt/.tmp/mocha-webpack/1550881702101/main.js" failures="0" time="0.001">
+    <testcase name="Unit tests for Date Helper Test if method getCurrentISODateString returns an instance of String" time="0" classname="Test if method getCurrentISODateString returns an instance of String">
+    </testcase>
+    <testcase name="Unit tests for Date Helper Test if method getCurrentISODateString returns expected value" time="0" classname="Test if method getCurrentISODateString returns expected value">
+    </testcase>
+    <testcase name="Unit tests for Date Helper Test if method getCurrentISODateString returns expected value" time="0.001" classname="Test if method getCurrentISODateString returns expected value">
+    </testcase>
+    <testcase name="Unit tests for Date Helper Test if method getDateNow returns expected value" time="0" classname="Test if method getDateNow returns expected value">
+    </testcase>
+    <testcase name="Unit tests for Date Helper Test if method getDateNow returns an instance of number" time="0" classname="Test if method getDateNow returns an instance of number">
+    </testcase>
+  </testsuite>
+  <testsuite name="Unit tests for LocalStorage helper" timestamp="2019-02-23T00:28:22" tests="3" file="/home/marcus/Documentos/iclinic/iclinic-challenge-nuxt/.tmp/mocha-webpack/1550881702101/main.js" failures="0" time="0.002">
+    <testcase name="Unit tests for LocalStorage helper Test if method saveItemInLocalStorage is working as expected" time="0.002" classname="Test if method saveItemInLocalStorage is working as expected">
+    </testcase>
+    <testcase name="Unit tests for LocalStorage helper Test if method getItemFromLocalStorage is working as expected" time="0" classname="Test if method getItemFromLocalStorage is working as expected">
+    </testcase>
+    <testcase name="Unit tests for LocalStorage helper Test if method getItemFromLocalStorage is working as expected when localStorage returns null" time="0" classname="Test if method getItemFromLocalStorage is working as expected when localStorage returns null">
+    </testcase>
+  </testsuite>
+</testsuites>
