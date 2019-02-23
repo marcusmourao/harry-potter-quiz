@@ -54,4 +54,21 @@ describe('Unit tests for quiz-form', () => {
       expect(wrapper.vm.answers[i]).to.equal(`${i}`);
     }
   });
+  it('Test if method submitQuizAnswers enables validation', () => {
+    expect(wrapper.vm.enableValidation).to.equal(false);
+    wrapper.vm.submitQuizAnswers();
+    expect(wrapper.vm.enableValidation).to.equal(true);
+  });
+  it('Test if method submitQuizAnswers calls calculateScore', () => {
+    const stubCalculateScore = stub(wrapper.vm, 'calculateScore');
+    wrapper.vm.submitQuizAnswers();
+    expect(stubCalculateScore.calledOnce).to.equal(true);
+    expect(stubCalculateScore.getCall(0).args[0]).to.equal(wrapper.vm.answers);
+    wrapper.vm.calculateScore.restore();
+  });
+  it('Test if method calculateScore return expected value', () => {
+    expect(wrapper.vm.calculateScore([])).to.equal(0);
+    expect(wrapper.vm.calculateScore([null, null, null])).to.equal(0);
+    expect(wrapper.vm.calculateScore([null, 'correct', null])).to.equal(1);
+  });
 });

@@ -4,10 +4,11 @@
       v-for="(question, index) in questions"
       :key="index"
       v-model="answers[index]"
+      :enable-validation="enableValidation"
       :question="question"
     />
     <div class="form__submit">
-      <button @click="submitQuizAnswers()">
+      <button type="submit">
         {{ $t('forms.submit') }}
       </button>
     </div>
@@ -28,10 +29,23 @@ export default {
   },
   data() {
     const answers = this.questions.map(() => '');
-    return {answers};
+    return {answers, enableValidation: false};
   },
   methods: {
-    submitQuizAnswers() {},
+    calculateScore(answers) {
+      let score = 0;
+      answers.forEach((answer) => {
+        if (answer) {
+          score += 1;
+        }
+      });
+      // eslint-disable-next-line
+      console.log(score);
+    },
+    submitQuizAnswers() {
+      this.enableValidation = true;
+      this.calculateScore(this.answers);
+    },
   },
 };
 </script>
