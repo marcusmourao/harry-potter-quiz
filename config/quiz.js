@@ -19,7 +19,7 @@ const quiz = {
       },
       {
         title: 'Como são chamados as pessoas que não são bruxos?',
-        answer: 'trouxas',
+        answer: 'Trouxas',
         tip: 'saxuort',
       },
       {

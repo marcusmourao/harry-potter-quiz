@@ -1,6 +1,7 @@
 export default {
   forms: {
     submit: 'Enviar respostas',
+    answer: 'Resposta',
   },
   questions: {
     'show-tip': 'Mostar dica',

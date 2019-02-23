@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="container">
     <h1>{{ quiz.title }}</h1>
     <quiz-form :questions="quiz.questions" />
   </section>
@@ -16,3 +16,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    margin: 0 auto;
+    max-width: 500px;
+  }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="display__form--container">
     <form @submit.prevent.stop="submitQuizAnswers()">
       <input-quiz
         v-for="(question, index) in questions"
@@ -14,13 +14,22 @@
         v-show="!formSubmitted"
         class="form__submit"
       >
-        <button type="submit">
+        <button
+          class="button__submit"
+          type="submit"
+        >
           {{ $t('forms.submit') }}
         </button>
       </div>
     </form>
-    <div v-if="formSubmitted">
-      <button @click="resetForm()">
+    <div
+      v-if="formSubmitted"
+      class="form__result"
+    >
+      <button
+        class="button__submit retry"
+        @click="resetForm()"
+      >
         {{ $t('quiz.play-again') }}
       </button>
       <span>{{ $tc('score', score) }}</span>
@@ -75,3 +84,47 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  @import "~@/assets/scss/variables";
+
+  @mixin transition($mode, $time) {
+    -webkit-transition: $mode $time;
+    -moz-transition: $mode $time;
+    -ms-transition: $mode $time;
+    -o-transition: $mode $time;
+    transition: $mode $time;
+  }
+  .button__submit {
+    padding: 10px;
+    background-color: $success-color;
+    border-radius: 10px;
+    color: $white-color;
+    font-family: $font;
+    font-size: $font-small;
+    text-align: center;
+    margin: 10px;
+    outline: none;
+    cursor: pointer;
+    align-self: center;
+    border: none;
+    min-width: 200px;
+    @include transition(all, 0.25s);
+
+    &:hover {
+      background-color: lighten($success-color, 10%);
+    }
+  }
+  .button__submit.retry {
+    background-color: $middle-color;
+    color: $white-color;
+    &:hover {
+      background-color: lighten($middle-color, 10%);
+    }
+  }
+  .form__submit,.form__result {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+</style>
