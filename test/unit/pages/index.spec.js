@@ -30,7 +30,7 @@ describe('Unit test for index page', () => {
     it('Test if page renders quiz form as expected', () => {
       const quizForm = wrapper.find({name: 'quiz-form'});
       expect(quizForm.exists()).to.equal(true);
-      expect(quizForm.attributes().questions).to.eql(QUIZ_FIXTURES.questions);
+      expect(quizForm.vm.questions).to.eql(QUIZ_FIXTURES.questions);
     });
   });
 });

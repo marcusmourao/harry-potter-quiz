@@ -1,3 +1,5 @@
 export default {
-  default: 'default',
+  forms: {
+    submit: 'Enviar respostas',
+  },
 };
