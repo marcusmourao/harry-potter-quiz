@@ -40,6 +40,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    resetForm: {
+      type: Boolean,
+      default: false,
+    },
     question: {
       type: Object,
       required: true,
@@ -66,6 +70,12 @@ export default {
     value: {
       immediate: true,
       handler: 'emitInputValue',
+    },
+    resetForm() {
+      if (this.resetForm) {
+        this.value = '';
+        this.showTip = false;
+      }
     },
   },
   methods: {

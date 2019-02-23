@@ -58,4 +58,13 @@ describe('Unit tests for password input', () => {
     expect(stubComponentEmit.getCall(1).args[1]).to.equal(null);
     wrapper.vm.$emit.restore();
   });
+  it('Test if change resetForm reset inputs', () => {
+    expect(wrapper.vm.resetForm).to.equal(false);
+    wrapper.vm.value = 'test value';
+    wrapper.vm.showTip = true;
+    expect(wrapper.vm.value).to.equal('test value');
+    wrapper.setProps({resetForm: true});
+    expect(wrapper.vm.value).to.equal('');
+    expect(wrapper.vm.showTip).to.equal(false);
+  });
 });

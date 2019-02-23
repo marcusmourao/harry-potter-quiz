@@ -71,4 +71,15 @@ describe('Unit tests for quiz-form', () => {
     expect(wrapper.vm.calculateScore([null, null, null])).to.equal(0);
     expect(wrapper.vm.calculateScore([null, 'correct', null])).to.equal(1);
   });
+  it('Test if method resetForm set correct data', () => {
+    wrapper.vm.enableValidation = true;
+    wrapper.vm.resetFormData = false;
+    wrapper.vm.formSubmitted = true;
+    wrapper.vm.formSubmitted = 5;
+    wrapper.vm.resetForm();
+    expect(wrapper.vm.enableValidation).to.equal(false);
+    expect(wrapper.vm.resetFormData).to.equal(true);
+    expect(wrapper.vm.formSubmitted).to.equal(false);
+    expect(wrapper.vm.score).to.equal(0);
+  });
 });

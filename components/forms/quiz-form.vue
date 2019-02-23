@@ -1,18 +1,31 @@
 <template>
-  <form @submit.prevent.stop="submitQuizAnswers()">
-    <input-quiz
-      v-for="(question, index) in questions"
-      :key="index"
-      v-model="answers[index]"
-      :enable-validation="enableValidation"
-      :question="question"
-    />
-    <div class="form__submit">
-      <button type="submit">
-        {{ $t('forms.submit') }}
+  <div>
+    <form @submit.prevent.stop="submitQuizAnswers()">
+      <input-quiz
+        v-for="(question, index) in questions"
+        :key="index"
+        v-model="answers[index]"
+        :disabled="formSubmitted"
+        :enable-validation="enableValidation"
+        :question="question"
+        :reset-form="resetFormData"
+      />
+      <div
+        v-show="!formSubmitted"
+        class="form__submit"
+      >
+        <button type="submit">
+          {{ $t('forms.submit') }}
+        </button>
+      </div>
+    </form>
+    <div v-if="formSubmitted">
+      <button @click="resetForm()">
+        {{ $t('quiz.play-again') }}
       </button>
+      <span>{{ $tc('score', score) }}</span>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -29,9 +42,21 @@ export default {
   },
   data() {
     const answers = this.questions.map(() => '');
-    return {answers, enableValidation: false};
+    return {
+      answers,
+      enableValidation: false,
+      resetFormData: false,
+      formSubmitted: false,
+      score: 0,
+    };
   },
   methods: {
+    resetForm() {
+      this.enableValidation = false;
+      this.resetFormData = true;
+      this.formSubmitted = false;
+      this.score = 0;
+    },
     calculateScore(answers) {
       let score = 0;
       answers.forEach((answer) => {
@@ -39,11 +64,12 @@ export default {
           score += 1;
         }
       });
-      // eslint-disable-next-line
-      console.log(score);
+      this.score = score;
     },
     submitQuizAnswers() {
+      this.resetFormData = false;
       this.enableValidation = true;
+      this.formSubmitted = true;
       this.calculateScore(this.answers);
     },
   },
