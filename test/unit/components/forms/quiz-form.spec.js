@@ -25,7 +25,8 @@ describe('Unit tests for quiz-form', () => {
   });
   it('Test if form submit calls submitQuizAnswers', () => {
     const stubSubmitAnswer = stub(wrapper.vm, 'submitQuizAnswers');
-    wrapper.trigger('submit');
+    const form = wrapper.find('form');
+    form.trigger('submit');
     expect(stubSubmitAnswer.calledOnce).to.equal(true);
     wrapper.vm.submitQuizAnswers.restore();
   });
@@ -37,7 +38,7 @@ describe('Unit tests for quiz-form', () => {
   it('Test if submit button calls submitQuizAnswers', () => {
     const stubSubmitAnswer = stub(wrapper.vm, 'submitQuizAnswers');
     const button = wrapper.find('.form__submit button');
-    button.trigger('click');
+    button.trigger('submit');
     expect(stubSubmitAnswer.calledOnce).to.equal(true);
     wrapper.vm.submitQuizAnswers.restore();
   });
@@ -67,9 +68,12 @@ describe('Unit tests for quiz-form', () => {
     wrapper.vm.calculateScore.restore();
   });
   it('Test if method calculateScore return expected value', () => {
-    expect(wrapper.vm.calculateScore([])).to.equal(0);
-    expect(wrapper.vm.calculateScore([null, null, null])).to.equal(0);
-    expect(wrapper.vm.calculateScore([null, 'correct', null])).to.equal(1);
+    wrapper.vm.calculateScore([]);
+    expect(wrapper.vm.score).to.equal(0);
+    wrapper.vm.calculateScore([null, null, null]);
+    expect(wrapper.vm.score).to.equal(0);
+    wrapper.vm.calculateScore([null, 'correct', null]);
+    expect(wrapper.vm.score).to.equal(1);
   });
   it('Test if method resetForm set correct data', () => {
     wrapper.vm.enableValidation = true;
