@@ -31,7 +31,7 @@ describe('Unit tests for password input', () => {
     const span = wrapper.find('span.answer');
     expect(span.exists()).to.equal(true);
     expect(span.isVisible()).to.equal(true);
-    expect(span.text()).to.equal(wrapper.vm.question.answer);
+    expect(span.text()).to.equal(`${i18n.t('forms.answer')}: ${wrapper.vm.question.answer}`);
   });
   it('Test if component renders tip correct', () => {
     const spanTip = wrapper.find('span.tip');
