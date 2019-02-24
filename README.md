@@ -1,6 +1,6 @@
-# seo-optmized-client
+# Harry Potter Quiz
 
-> My cool Nuxt.js project
+> Quiz challenge about Harry Potter
 
 ## Build Setup
 
@@ -8,15 +8,23 @@
 # install dependencies
 $ npm install
 
-# serve with hot reload at localhost:3000
+# Run Unit tests
+$ npm run test-local
+
+# Run on dev mode - Access localhost:3000
 $ npm run dev
 
-# build for production and launch server
+# Run on production mode
 $ npm run build
 $ npm start
+# Access localhost:3000
 
-# generate static project
-$ npm run generate
+# Run from docker
+$ docker build -t harry-potter-quiz .
+
+# Run image localy
+$ docker run -d --restart=always -p 3000:3000 harry-potter-quiz
+# Access http://localhost:3000
+
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

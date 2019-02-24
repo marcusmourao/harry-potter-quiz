@@ -1,9 +1,8 @@
-FROM node:8
+FROM node:10
 
-ARG ENV=prod
 ARG HOST=0.0.0.0
 
-ENV PORT 80
+ENV PORT 3000
 
 RUN mkdir -p /app
 COPY . /app
@@ -12,6 +11,6 @@ WORKDIR /app
 EXPOSE $PORT
 
 RUN npm ci --only=production
-RUN npm run build-$ENV
+RUN npm run build-prod
 
-CMD npm run start-${ENV}
+CMD npm run start-prod
